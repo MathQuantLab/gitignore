@@ -1,8 +1,8 @@
 import asyncio
-import utils
 import sys
-
 from pathlib import Path
+
+import utils
 
 FILE_NAME = ".gitignore"
 
