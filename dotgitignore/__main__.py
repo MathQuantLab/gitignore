@@ -2,7 +2,7 @@ import asyncio
 import sys
 from pathlib import Path
 
-import utils
+from .utils import fetch
 
 FILE_NAME = ".gitignore"
 
@@ -15,6 +15,7 @@ async def main() -> None:
     if Path(FILE_NAME).exists():
         if "-f" in sys.argv:
             Path(FILE_NAME).unlink()
+            sys.argv.remove("-f")
         else:
             print("A .gitignore file already exists in the current directory.")
             sys.exit(0)
@@ -26,7 +27,7 @@ async def main() -> None:
         try:
             for result in asyncio.as_completed(
                 [
-                    utils.fetch(language)
+                    fetch(language)
                     for language in args
                     if not language.startswith("-")
                 ]
