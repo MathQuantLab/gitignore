@@ -1,7 +1,12 @@
 import setuptools
+import os
 
-LONG_DESCRIPTION = open("README.md").read()
-REQUIRED_PACKAGES = open("requirements.txt").read().splitlines()
+directory = os.path.abspath(os.path.dirname(__file__))
+requirements_path = os.path.join(directory, 'requirements.txt')
+readme_path = os.path.join(directory, 'README.md')
+
+LONG_DESCRIPTION = open(readme_path).read()
+REQUIRED_PACKAGES = open(requirements_path).read().splitlines()
 
 setuptools.setup(
     name="dotgitignore",
@@ -9,10 +14,10 @@ setuptools.setup(
     author="Aiglon Doré & Rainbow",
     author_email="contact@mathquantlab.com",
     packages=setuptools.find_packages(),
-    description="A command-line utility to fetch .gitignore files for multiple languages.",
+    description="A command-line utility tool to fetch .gitignore files for multiple languages.",
     long_description=LONG_DESCRIPTION,
     long_description_content_type="text/markdown",
-    license="MIT",
+    license="GNU GPL-3",
     keywords="gitignore git ignore",
     install_requires=REQUIRED_PACKAGES,
 )
